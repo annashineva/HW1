@@ -37,6 +37,7 @@ class Mentor:
         self.name = name
         self.surname = surname
         self.courses_attached = []
+        self.grades = {}
 
 
 class Lecturer(Mentor):
@@ -66,6 +67,7 @@ class Reviewer(Mentor):
                 student.grades[course] = [grade]
         else:
             return 'Oшибка'
+
 
     def __str__(self):
         res = f'Имя: {self.name}\nФамилия: {self.surname}'
@@ -98,3 +100,31 @@ some_student.grades = {'Python': 3, 'Git': 5}
 some_student.courses_in_progress += ['Python', 'Git']
 some_student.finished_courses += ['Введение в программирование']
 print(some_student)
+
+student1 = Student('Student', '1', 'gender')
+student1.courses_in_progress = ['Python', 'Git']
+student1.grades = {9, 8}
+student2 = Student('Student', '2', 'gender')
+student1.courses_in_progress = ['Python', 'Git']
+student1.grades = {7, 8}
+lecturer1 = Lecturer('Lecturer', '1')
+lecturer1.courses_attached = ['Python', 'Git']
+lecturer1.grades = {7, 8}
+lecturer2 = Lecturer('Lecturer', '2')
+lecturer1.courses_attached = ['Git', 'Python']
+lecturer1.grades = {9, 8}
+
+
+def student_rate(students):
+    students = list(student1 + student2)
+    students_avr_grade = sum(students) / len(students)
+    return students_avr_grade
+
+
+def lecturer_rate(lecturers):
+    lecturers = list(lecturer1 + lecturer2)
+    lecturers_avr_grade = sum(lecturers) / len(lecturers)
+    return lecturers_avr_grade
+
+print(student_rate)
+print(lecturer_rate)
